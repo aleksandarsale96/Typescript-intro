@@ -1,0 +1,181 @@
+install
+npm install -g @angular-cli
+
+prefiks je ng
+
+pravljenje:
+ng new my-first-app
+
+pokretanje:
+ng serve --open 
+
+port 4200
+
+build:
+ng build --prod
+
+
+Angular CLI je alat sa komandnim interfejsom, koji se koristi za uspostavljanje razvojnog okruženja za kreiranje Angular aplikacija.
+Angular CLI se instalira kao globalni npm paket, korišćenjem komande npm install -g @angular/cli.
+
+
+Typescrypt je neophodno prevesti u js da bi browser mogao da prepozna kod koji smo napisali,prvo je potrebno instalirati globalno
+npm install -g typescript
+
+prevodjenje se obavljas 
+tsc i ime fajla,primer tsc index.ts
+
+Ako nismo sigurni kojeg ce tipa biti neka promenljiva koristimo :any    primer:
+let noSure: any = 6;
+
+
+suprotno od :any => :void => odsustvo nekog tipa,koristi se prilikom rada sa funkcijama,znaci da nema povratnu vrednost
+function sayHallo(name: string):void {
+    console.log("Hello" + name);
+
+    ako koristimo return doci ce do greske
+}
+
+type :never => funckija koja se nikad nece zavrsiti uspesno:
+function sayHallo(mesaage: string): never {
+    throw new Error(mesaage);
+}
+
+takodje funckija koja se nece izvrsiti, funckija sa beskonacnom petljom:
+funciton infiniteLoop(): never {
+    while(true) {
+    }
+}
+
+
+definisanje nizova na 3 nacina:
+    1 nacin:
+    let myArray: number[] = [0, 1, 2];
+
+    2 nacin:
+    ley array: Array<number> = [4, 5, 6];
+
+    3 nacin:
+    kreiranje nizova sa unapred utvrdjenom duzinom i tipovima:
+    let myTuple : [srting, boolean];
+    myTyple = ['ssdada', false];
+    
+    
+konstante kojima je moguce pristupiti: enum
+enum Day {Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5};
+koriscenje:
+let day: Day = Day.Monday;
+switch (day) {
+    case Day.Monday:
+        console.log("Today is Monday!");
+        break;
+    case Day.Tuesday:
+        console.log("Today is Tuesday!");
+        break;
+    case Day.Wednesday:
+        console.log("Today is Wednesday!");
+        break;
+    //...
+}
+
+
+
+U TypeScriptu je moguće definisati promenljivu koja može imati jedan od nekoliko unapred definisanih tipova,definisanje unije tipovima
+-a => ulazni parametar
+-number | string => ili number ili string
+-return <number>a * <number>a; => proces provere koda
+
+    function square(a: (number | string)): number {
+        return <number>a * <number>a;
+    }
+
+
+Funkcije => u TypeScriptu funkcionišu identično funkcijama u JavaScript jeziku, uz nekoliko dodataka.
+
+    function greet(greeting: string, name: string ) : string {
+        return greeting + ' ' + name + '!';
+    }
+
+    Ako zelimo da neki parametar oznacimo kao opcioni,sto znaci da ne moramo posle da ga iskoristimo:
+    function greet(greeting: string, name?: string ) : string {
+        return greeting + ' ' + name + '!';
+    }
+
+    Ako zelimo da uz neki parametar dodamo podrazumevanu vrednost:
+    function greet(greeting: string = 'Hello', name: string ) : string {
+        return greeting + ' ' + name + '!';
+    }
+
+
+Klase:
+    class Employee {
+    
+        code: number;
+        name: string;
+        
+        constructor(code: number, name: string) {
+            this.code = code;
+            this.name = name;
+        }
+    }
+    
+    let emp = new Employee(111, "John"); 
+
+
+Interfejsi => Jedna od najznačajnijih funkcionalnosti TypeScript jezika, koja izvorno ne postoji u JavaScriptu, 
+odnosi se na mogućnost definisanja interfejsa,interfejsi su mehanizam pomoću koga je moguće reći da će neki tip imati određena svojstva i metode.
+
+    Nacin 1:
+    interface Named1 {
+        name: string;
+    }
+    function sayHello(personObj: Named) {
+        console.log("Hello" + name);
+    }
+    let person = {
+        name: "Ben",
+        email: "email@email.com"
+    }
+    
+    sayHello(person);
+
+
+
+    Nacin 2: => implements => globalno, mozemo ih koristiti i dalje u razvoju
+
+    interface Named {
+        name: string;
+        getName(): string;
+    }
+    class Employee implements Name {
+        protected code: number;
+        name: string;
+    
+        getName(): string {
+            return name;
+        }
+        constructor(code: number, name: string) {
+            this.code = code;
+            this.name = name;
+        }
+    }
+    class Teacher implements Named {
+ 
+        protected university: string;
+        name: string;
+     
+        getName(): string {
+            return name;
+        }
+        constructor(university: string, name: string) {
+            this.university = university;
+            this.name = name;
+        }
+    }
+
+    let obj: Named = new Employee(111, "John Torrance");
+    let obj2: Named = new Teacher("sdada", "adasd");
+
+
+Dekoratori => omogućavaju da se deklaracije klasa, funkcija i svojstava dekorišu specijalnim oznakama, koje se nazivaju anotacije
+Uvek se u pozadini realizuju koriscenjem funkcija
