@@ -20,7 +20,37 @@ ng generate component ime
 
 Angular CLI je alat sa komandnim interfejsom, koji se koristi za uspostavljanje razvojnog okruženja za kreiranje Angular aplikacija.
 Angular CLI se instalira kao globalni npm paket, korišćenjem komande npm install -g @angular/cli.
-
+Svaka Angular aplikacija zasniva se na strukturi određenih, unapred utvrđenih pojmova, koji unutar ekosistema Angulara imaju posebno značenje.
+Angular aplikacije sačinjene su iz modula, i to iz posebne vrste modula koji se slikovito nazivaju NgModules.
+NgModuli služe kao kontejneri za elemente od kojih je sačinjena jedna Angular aplikacija ili jedan njen deo.
+Angular moduli nisu isto što i ES6 moduli; obe vrste modula se koriste tokom razvoja Angular aplikacija i međusobno se dopunjuju.
+Svaka Angular aplikacija poseduje makar jedan NgModule i on se naziva koreni Angular modul.
+Angular moduli se definišu korišćenjem običnih klasa, koje su dekorisane jednim posebnim dekoratorom @NgModule().
+Angular je softverski okvir koji je sačinjen iz mnoštva modula Angulara koji obezbeđuju skup ugrađenih funkcionalnosti; oni se nazivaju Angular biblioteke.
+Angular komponentama definiše se jedan deo korisničkog okruženja Angular aplikacije, odnosno jedan deo prikaza koji korisnik vidi unutar web pregledača.
+Angular komponente definišu se kao obične klase, koje se dekorišu korišćenjem specijalnog dekoratora @Component(), kome se prosleđuje objekat sa metapodacima za konfigurisanje komponente.
+Prezentacija jedne komponente se definiše korišćenjem šablona.
+Nova komponenta sa korišćenjem Angular CLI-ja može se kreirati upućivanjem komande ng generate component name, gde se name odnosi na naziv komponente.
+Angular šabloni se kreiraju korišćenjem čistog HTML jezika.
+Angular ne dozvoljava definisanje script elementa unutar šablona.
+Povezivanje podataka (engl. data binding) je pojam koji se u programiranju koristi da označi pristup koji omogućava automatsko propagiranje promena podataka između različitih slojeva aplikacije.
+Najjednostavniji način za ispisivanje nekih podataka unutar Angular šablona jeste upotreba interpolacije, koja se karakteriše upotrebom dva para vitičastih zagrada – {{}}.
+Property Binding omogućava povezivanje sa svojstvima DOM objekata.
+Kako bi se obavilo povezivanje sa nekim atributom koji ne poseduje pripadajuće DOM svojstvo, unutar uglastih zagrada kojima se definiše povezivanje potrebno je postaviti prefiks attr.
+Za povezivanje sa class HTML atributom koriste se uglaste zagrade, unutar kojih se navodi prefiks class.
+Za uticanje na vrednost style HTML atributa Angular definiše prefiks style, koji se koristi unutar uglastih zagrada.
+Slušanje događaja se unutar šablona Angular komponenata može obaviti korišćenjem DOM naziva događaja, koji se smešta unutar jednog para običnih zagrada.
+Angular poseduje veliki broj ugrađenih direktiva koje je moguće koristiti za obavljanje različitih zahvata nad šablonom.
+Direktiva NgClass koristi se za postavljanje klasa na DOM elementima.
+Direktiva NgStyle koristi se za definisanje linijske stilizacije na DOM elementima.
+Direktiva NgModel koristi se za realizaciju dvosmernog povezivanja.
+Preduslov za korišćenje NgModel direktive jeste uključen FormsModule unutar tekućeg projekta.
+Unutar modula @angular/forms nalaze se potrebne funkcionalnosti za funkcionisanje NgModel direktive.
+Direktiva NgModel postavlja se unutar dva para zagrada – [()]; spoljašnje zagrade su uglaste, a unutrašnje obične, pa se ovakva sintaksa veoma često naziva banana in a box.
+Strukturalne direktive u Angularu su NgIf, NgFor i NgSwitch.
+Direktiva NgIf omogućava uslovno kreiranje ili uništavanje elemenata unutar šablona Angular komponenata.
+Direktiva NgFor omogućava generisanje prezentacije korišćenjem petlje, odnosno ponavljanjem određene logike više puta.
+Direktiva NgSwitch omogućava uslovno generisanje elemenata korišćenjem sintakse uslovne konstrukcije switch.
 
 Typescrypt je neophodno prevesti u js da bi browser mogao da prepozna kod koji smo napisali,prvo je potrebno instalirati globalno
 npm install -g typescript
